@@ -1,0 +1,93 @@
+
+  // Define the JavaScript function
+      function extractValuesFromUrl(url) {
+          const urlParts = url.split('?');
+            let idValue, sellingPlanValue;
+          for (let i = 1; i < urlParts.length; i++) {
+            const queryParams = urlParts[i].split('&');
+                queryParams.forEach(param => {
+              const [key, value] = param.split('=');
+              if (key === 'items[][id]') {
+                idValue = decodeURIComponent(value);
+              } else if (key === 'items[][selling_plan]') {
+                sellingPlanValue = decodeURIComponent(value);
+              }
+            });
+          }
+
+          return { id: idValue, sellingPlan: sellingPlanValue };
+        }
+    function myFunction(buttonId) {
+      const urlString = buttonId
+      const extractedValues = extractValuesFromUrl(urlString);
+      const id = extractedValues.id;
+      const number = id.replace(/\D/g, '');
+      if (number === '40726662021143'){
+          //MONTLY
+          const sellingPlan = '4340973591'
+          try {
+              fetch('/cart/add.js', {
+                method: 'POST',
+                headers: {
+                  'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                  items: [
+                    {
+                      id: number,
+                      quantity: 1,
+                      selling_plan: sellingPlan,
+                      properties: {
+                        _inveterate_subscription: true
+                      },
+                    },
+                  ],
+                }),
+              })
+              .then((response) => {
+                if(response.ok) {
+                  console.log('item in cart!');
+                } else {
+                  console.log('error debugging');
+                }
+              });
+            } catch(error) {
+              console.error('err', error);
+            }
+      } else if (number === '40721243996183'){
+          //ANNUAL
+          const sellingPlan = '4239720471'
+          try {
+              fetch('/cart/add.js', {
+                method: 'POST',
+                headers: {
+                  'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                  items: [
+                    {
+                      id: number,
+                      quantity: 1,
+                      selling_plan: sellingPlan,
+                      properties: {
+                        _inveterate_subscription: true
+                      },
+                    },
+                  ],
+                }),
+              })
+              .then((response) => {
+                if(response.ok) {
+                  console.log('item in cart!');
+                } else {
+                  console.log('err');
+                }
+              });
+            } catch(error) {
+              console.error('err', error);
+            }
+      } else {
+          console.log('err')
+      }
+    }
+</script>

@@ -1,3 +1,10 @@
+//monthly selling plan url
+//https://club-magic-hour.myshopify.com/cart/clear?return_to=/cart/add?items[][id]=40726662021143%26items[][quantity]=1%26items[][selling_plan]=4340973591%26return_to=/checkout
+
+//annual selling plan url
+//https://club-magic-hour.myshopify.com/cart/clear?return_to=/cart/add?items[][id]=40721243996183%26items[][quantity]=1%26items[][selling_plan]=4239720471%26return_to=/checkout
+
+
 <script>
   // extract the values from button URL
       function extractValuesFromUrl(url) {

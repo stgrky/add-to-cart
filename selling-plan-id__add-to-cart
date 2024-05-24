@@ -1,5 +1,5 @@
-
-  // Define the JavaScript function
+<script>
+  // extract the values from button URL
       function extractValuesFromUrl(url) {
           const urlParts = url.split('?');
             let idValue, sellingPlanValue;
@@ -17,13 +17,13 @@
 
           return { id: idValue, sellingPlan: sellingPlanValue };
         }
-    function myFunction(buttonId) {
+    function membershipAddToCart(buttonId) {
       const urlString = buttonId
       const extractedValues = extractValuesFromUrl(urlString);
       const id = extractedValues.id;
       const number = id.replace(/\D/g, '');
       if (number === '40726662021143'){
-          //MONTLY
+          //Monthly selling plan
           const sellingPlan = '4340973591'
           try {
               fetch('/cart/add.js', {
@@ -55,7 +55,7 @@
               console.error('err', error);
             }
       } else if (number === '40721243996183'){
-          //ANNUAL
+          //Annual selling plan
           const sellingPlan = '4239720471'
           try {
               fetch('/cart/add.js', {
